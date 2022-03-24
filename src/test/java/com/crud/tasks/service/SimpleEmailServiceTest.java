@@ -28,12 +28,12 @@ class SimpleEmailServiceTest {
     public void shouldSendEmail() {
         //Given
 //        Mail mail = new Mail("test@test.com", "Test", "Test Message");
-        Optional<String> cc = Optional.of("CCtest@test.com");
+//        Optional<String> cc = Optional.of("CCtest@test.com");
         Mail mail = Mail.builder()
                 .mailTo("test@test.com")
                 .subject("Test")
                 .message("Test Message")
-                .toCc(cc)
+                .toCc("CCtest@test.com")
                 .build();
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
