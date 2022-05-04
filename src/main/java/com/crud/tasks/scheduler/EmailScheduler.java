@@ -22,7 +22,7 @@ public class EmailScheduler {
         String message = "Currently in database you got: " + size + " task";
 
         if (size != 1) message += "s";
-        
+
         simpleEmailService.send(
                 Mail.builder()
                         .mailTo(adminConfig.getAdminMail())
