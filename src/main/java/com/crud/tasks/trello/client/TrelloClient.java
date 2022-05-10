@@ -1,6 +1,7 @@
 package com.crud.tasks.trello.client;
 
 import com.crud.tasks.domain.CreatedTrelloCardDto;
+import com.crud.tasks.domain.TrelloBadgesDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
@@ -66,5 +67,16 @@ public class TrelloClient {
                 .toUri();
 
         return restTemplate.postForObject(url, null, CreatedTrelloCardDto.class);
+    }
+
+    public TrelloBadgesDto getTrelloCardBadge(Long id) {
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/cards/" + id + "/badges")
+                .queryParam("key", trelloConfig.getTrelloAppKey())
+                .queryParam("token", trelloConfig.getTrelloAppToken())
+                .build()
+                .encode()
+                .toUri();
+
+        return restTemplate.getForObject(url, TrelloBadgesDto.class);
     }
 }

@@ -1,6 +1,7 @@
 package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.CreatedTrelloCardDto;
+import com.crud.tasks.domain.TrelloBadgesDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.service.TrelloService;
@@ -30,4 +31,8 @@ public class TrelloController {
         return ResponseEntity.ok(trelloFacade.createCard(trelloCardDto));
     }
 
+    @GetMapping("cards/{id}/badges")
+    public ResponseEntity<TrelloBadgesDto> getTrelloBadges(@PathVariable Long id) {
+        return ResponseEntity.ok(trelloFacade.getTrelloBadges(id));
+    }
 }
