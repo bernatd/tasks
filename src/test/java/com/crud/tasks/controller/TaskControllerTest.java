@@ -109,6 +109,8 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.is("Task")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content", Matchers.is("content")));
     }
 }
